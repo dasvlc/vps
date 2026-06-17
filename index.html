@@ -128,7 +128,7 @@ window.Quarto = {
   <li><a href="#鉛直速度の連続" id="toc-鉛直速度の連続" class="nav-link" data-scroll-target="#鉛直速度の連続"><span class="header-section-number">5.1</span> 鉛直速度の連続</a></li>
   <li><a href="#水平速度の連続" id="toc-水平速度の連続" class="nav-link" data-scroll-target="#水平速度の連続"><span class="header-section-number">5.2</span> 水平速度の連続</a></li>
   <li><a href="#接線応力の連続" id="toc-接線応力の連続" class="nav-link" data-scroll-target="#接線応力の連続"><span class="header-section-number">5.3</span> 接線応力の連続</a></li>
-  <li><a href="#法線応力の跳び" id="toc-法線応力の跳び" class="nav-link" data-scroll-target="#法線応力の跳び"><span class="header-section-number">5.4</span> 法線応力の跳び</a></li>
+  <li><a href="#法線応力の釣り合い" id="toc-法線応力の釣り合い" class="nav-link" data-scroll-target="#法線応力の釣り合い"><span class="header-section-number">5.4</span> 法線応力の釣り合い</a></li>
   <li><a href="#運動学的条件" id="toc-運動学的条件" class="nav-link" data-scroll-target="#運動学的条件"><span class="header-section-number">5.5</span> 運動学的条件</a></li>
   </ul></li>
   <li><a href="#slow-viscous-flow-近似" id="toc-slow-viscous-flow-近似" class="nav-link" data-scroll-target="#slow-viscous-flow-近似"><span class="header-section-number">6</span> slow viscous flow 近似</a></li>
@@ -206,7 +206,7 @@ A＋
 ⛶
 </button>
 </div>
-<p>Appendix 1 では二層粘性流体の線形 Rayleigh–Taylor 不安定から成長率と最適波数を導き，Appendix 2 では有限振幅の二次非線形項が三波共鳴を通じて六角形状と孤立した spout を選ぶ仕組みを追う．</p>
+<p>Appendix 1 では二層粘性流体の線形 Rayleigh–Taylor 不安定から成長率と最適波数を導き，Appendix 2 では有限振幅の二次非線形項がもたらす影響を計算する．</p>
 <section id="この論文における-appendix-の位置づけ" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> この論文における Appendix の位置づけ</h1>
 <p>論文は不安定な薄層の発達を，概ね次の三段階に分けている．</p>
@@ -216,9 +216,6 @@ A＋
 <li><p>成熟段階：形状が粘性比に強く依存し，細長い柱または球状頭部と細い pipe が形成される．</p></li>
 </ol>
 <p>Appendix 1 は第1段階，Appendix 2 は第2段階を説明する．第3段階は本文中で別の近似モデルにより議論される．</p>
-<div class="pointbox">
-<p>線形理論が決めるのは主として「どの長さスケールが成長するか」であり，「平面内で roll になるか，hexagon になるか」までは決めない．後者の選択に Appendix 2 の二次非線形性が必要になる．</p>
-</div>
 </section>
 <section id="物理設定と記号" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> 物理設定と記号</h1>
@@ -227,7 +224,7 @@ A＋
 </div>
 <div class="figure-card">
 <svg viewbox="0 0 900 330" role="img" aria-label="二層流体の模式図">
-<defs> <clippath id="upperLayerClip"> <path d="M80,70 H810 V180 C610,135 510,135 400,180 C290,225 190,135 80,180 Z"></path> </clippath> <clippath id="lowerLayerClip"> <path d="M80,270 H810 V180 C610,135 510,135 400,180 C290,225 190,135 80,180 Z"></path> </clippath> </defs> <rect x="80" y="70" width="730" height="200" fill="#ffffff" stroke="#4f6780"></rect> <rect x="80" y="70" width="730" height="200" fill="#eaf3fb" clip-path="url(#upperLayerClip)"></rect> <rect x="80" y="70" width="730" height="200" fill="#f6eee7" clip-path="url(#lowerLayerClip)"></rect> <line x1="80" y1="180" x2="810" y2="180" stroke="#17202a" stroke-opacity="0.25" stroke-width="2" stroke-dasharray="8 8"></line> <path d="M80,180 C190,135 290,225 400,180 S610,135 810,180" fill="none" stroke="#17202a" stroke-width="4"></path> <line x1="80" y1="270" x2="810" y2="270" stroke="#17202a" stroke-width="6"></line> <line x1="850" y1="270" x2="850" y2="55" stroke="#17202a" stroke-width="3"></line> <text x="596" y="200" font-size="22">z = h</text> <polygon points="850,45 842,61 858,61" fill="#17202a"></polygon> <text x="865" y="62" font-size="24">z</text> <text x="105" y="115" font-size="24">流体2：ρ₂，μ₂，z &gt; h</text> <text x="105" y="235" font-size="24">薄層1：ρ₁，μ₁，0 &lt; z &lt; h</text> <rect x="585" y="128" width="195" height="34" fill="#ffffff" fill-opacity="0.82" rx="6" ry="6"></rect> <text x="596" y="151" font-size="22">z = η(x,y,t)</text> <text x="700" y="295" font-size="22">z = 0</text>
+<defs> <clippath id="upperLayerClip"> <path d="M80,70 H810 V180 C610,135 510,135 400,180 C290,225 190,135 80,180 Z"></path> </clippath> <clippath id="lowerLayerClip"> <path d="M80,270 H810 V180 C610,135 510,135 400,180 C290,225 190,135 80,180 Z"></path> </clippath> </defs> <rect x="80" y="70" width="730" height="200" fill="#ffffff" stroke="#4f6780"></rect> <rect x="80" y="70" width="730" height="200" fill="#eaf3fb" clip-path="url(#upperLayerClip)"></rect> <rect x="80" y="70" width="730" height="200" fill="#f6eee7" clip-path="url(#lowerLayerClip)"></rect> <line x1="80" y1="180" x2="810" y2="180" stroke="#17202a" stroke-opacity="0.25" stroke-width="2" stroke-dasharray="8 8"></line> <path d="M80,180 C190,135 290,225 400,180 S610,135 810,180" fill="none" stroke="#17202a" stroke-width="4"></path> <line x1="80" y1="270" x2="810" y2="270" stroke="#17202a" stroke-width="6"></line> <line x1="850" y1="270" x2="850" y2="55" stroke="#17202a" stroke-width="3"></line> <text x="596" y="200" font-size="22">z = h</text> <polygon points="850,45 842,61 858,61" fill="#17202a"></polygon> <text x="865" y="62" font-size="24">z</text> <text x="105" y="115" font-size="24">流体2：ρ₂，μ₂，z &gt; h</text> <text x="105" y="235" font-size="24">薄層1：ρ₁，μ₁，0 &lt; z &lt; h</text> <rect x="585" y="128" width="195" height="34" fill="#ffffff" fill-opacity="0.82" rx="6" ry="6"></rect> <text x="596" y="151" font-size="22">z = h + η(x,y,t)</text> <text x="700" y="295" font-size="22">z = 0</text>
 </svg>
 <div class="small-note">
 界面の基準位置は z = h．不安定配置では上層の方が高密度で，Δρ = ρ₂ − ρ₁ &gt; 0．
@@ -269,7 +266,7 @@ A＋
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\eta(x,y,t)\)</span></td>
-<td style="text-align: left;">界面高度</td>
+<td style="text-align: left;">界面高度の変位</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(k\)</span></td>
@@ -277,7 +274,7 @@ A＋
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(n\)</span></td>
-<td style="text-align: left;">指数成長率</td>
+<td style="text-align: left;">成長率</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\Delta\rho=\rho_2-\rho_1\)</span></td>
@@ -306,7 +303,7 @@ A＋
 <summary>
 途中式：全圧力を静水圧と流れに伴う圧力摂動に分ける
 </summary>
-<p>非圧縮Newton流体のNavier–Stokes方程式は</p>
+<p>非圧縮ニュートン流体のNavier–Stokes方程式は</p>
 <p><span class="math display">\[
 \rho
 \left(
@@ -636,7 +633,7 @@ ze^{-kz}
 =
 0
 \]</span></p>
-<p>である．水平方向に波数ベクトル <span class="math inline">\(\boldsymbol{k}\)</span> をもつ正規モード <span class="math display">\[
+<p>である．水平方向に波数ベクトル <span class="math inline">\(\boldsymbol{k}\)</span> をもつ波を考える． <span class="math display">\[
 w_i(x,y,z,t)
 =
 w_i(z)\mathrm{e}^{i\boldsymbol{k}\cdot\boldsymbol{x}}\mathrm{e}^{nt}
@@ -668,7 +665,7 @@ i\boldsymbol{k}\cdot\boldsymbol{u}_{hi}
 \frac{\partial w_i}{\partial s}
 \right)
 \]</span></p>
-<p>である． 単一水平Fourierモードを</p>
+<p>である． 波数<span class="math inline">\(k\)</span>をもつ波について考える．</p>
 <p><span class="math display">\[
 w_i=w_i(z)\mathrm{e}^{iks}\mathrm{e}^{nt},
 \qquad
@@ -755,8 +752,8 @@ $$ --> <span class="math display">\[
 \]</span></p>
 <p>となる．</p>
 </section>
-<section id="法線応力の跳び" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="法線応力の跳び"><span class="header-section-number">5.4</span> 法線応力の跳び</h2>
+<section id="法線応力の釣り合い" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="法線応力の釣り合い"><span class="header-section-number">5.4</span> 法線応力の釣り合い</h2>
 <p>界面がほぼ水平であるとき，流体 <span class="math inline">\(i\)</span> の法線応力は</p>
 <p><span class="math display">\[
 \sigma_{zz,i}
@@ -783,7 +780,7 @@ g(\rho_2-\rho_1)\eta
 =
 -\mathcal{D}w_i
 \]</span></p>
-<p>を用いる．単一水平Fourierモードでは <span class="math inline">\(\nabla_h^2\to-k^2\)</span> なので，</p>
+<p>を用いる．波数<span class="math inline">\(k\)</span>をもつ波について考えると<span class="math inline">\(\nabla_h^2\to-k^2\)</span> なので，</p>
 <p><span class="math display">\[
 -\rho_i\frac{\partial}{\partial t}\mathcal{D}w_i
 =
@@ -1618,55 +1615,6 @@ D\left[
 \end{aligned}
 \]</span></p>
 <p>となる．これが原論文の式（A13）の第4行である．</p>
-<div class="pointbox">
-<p>第4行の各列に現れる項を整理すると，</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>成分</th>
-<th style="text-align: right;">浮力 <span class="math inline">\(R\)</span></th>
-<th style="text-align: right;">粘性差 <span class="math inline">\(\mathcal{C}\)</span></th>
-<th style="text-align: right;">非定常密度 <span class="math inline">\(\alpha_i\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(A\)</span>：下層の <span class="math inline">\(k\)</span> 型</td>
-<td style="text-align: right;">あり</td>
-<td style="text-align: right;">あり</td>
-<td style="text-align: right;">あり</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(B\)</span>：下層の <span class="math inline">\(q_1\)</span> 型</td>
-<td style="text-align: right;">あり</td>
-<td style="text-align: right;">あり</td>
-<td style="text-align: right;">なし</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(C\)</span>：上層の <span class="math inline">\(k\)</span> 型</td>
-<td style="text-align: right;">あり</td>
-<td style="text-align: right;">あり</td>
-<td style="text-align: right;">あり</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(D\)</span>：上層の <span class="math inline">\(q_2\)</span> 型</td>
-<td style="text-align: right;">あり</td>
-<td style="text-align: right;">あり</td>
-<td style="text-align: right;">なし</td>
-</tr>
-</tbody>
-</table>
-<p><span class="math inline">\(A,C\)</span> では非定常項が残り，<span class="math inline">\(B,D\)</span> では非定常項と粘性拡散項が相殺される．浮力項は界面速度の連続条件を用いて対称化したため，全列に現れる．</p>
-<p>この第4行は，物理的には，</p>
-<p><span class="math display">\[
-\text{浮力駆動}
-=
-\text{非定常応答}
-+
-\text{粘性抵抗}
-\]</span></p>
-<p>を表している．</p>
-</div>
 </section></details>
 </section></details>
 </section>
@@ -2000,7 +1948,7 @@ q_1\coth(q_1h)-k\coth(kh)
 <p><span class="math display">\[
 d=q_2-k
 \]</span></p>
-<p>が分母と係数に入っている．したがって，ここで式（A14a），（A14b）を代入する必要がある．つまり A14a, A14b は，A13 の行列式を 2×2 へ縮約したあと，その 2×2 行列式を一次まで評価するために必要な途中式である．</p>
+が分母と係数に入っている．したがって，ここで式（A14a），（A14b）を代入する必要がある．
 </details>
 <p>論文では，この縮約後の <span class="math inline">\(2\times2\)</span> 同次系へ式（A14a），（A14b）を代入する．さらに，</p>
 <p><span class="math display">\[
@@ -2884,9 +2832,6 @@ w(h)
 \]</span></p>
 <p>である．ここで <span class="math inline">\(u,v,w,\eta\)</span> を一次の微小量とみなすと，<span class="math inline">\(u\eta_x\)</span>，<span class="math inline">\(v\eta_y\)</span>，<span class="math inline">\(\eta w_z\)</span> は二次項である．三次以上を捨てると，式（B2）の形になる．</p>
 </details>
-<div class="pointbox">
-<p>線形項 <span class="math inline">\(w(h)\)</span> は各 Fourier モードを独立に成長させる．二次項は二つの Fourier モードの積を含むため，波数の和と差を生成し，モード間相互作用を起こす．</p>
-</div>
 </section>
 <section id="線形解を書き直す" class="level1" data-number="10">
 <h1 data-number="10"><span class="header-section-number">10</span> 線形解を書き直す</h1>

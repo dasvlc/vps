@@ -10,7 +10,7 @@
   --accent: #8a3b12;
   --border: #d8e0e8;
   --shadow: 0 8px 28px rgba(31, 49, 70, .08);
-  --content-width: 900px;
+  --content-width: 1200px;
   --page-gutter: clamp(40px, 7vw, 140px);
   --toc-width: 285px;
   --base-size: 18px;
