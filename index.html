@@ -140,10 +140,13 @@ window.Quarto = {
   </ul></li>
   <li><a href="#appendix-1-の結論" id="toc-appendix-1-の結論" class="nav-link" data-scroll-target="#appendix-1-の結論"><span class="header-section-number">8</span> Appendix 1 の結論</a></li>
   <li><a href="#appendix-2界面の非線形移流" id="toc-appendix-2界面の非線形移流" class="nav-link" data-scroll-target="#appendix-2界面の非線形移流"><span class="header-section-number">9</span> Appendix 2：界面の非線形移流</a></li>
-  <li><a href="#線形解を書き直す" id="toc-線形解を書き直す" class="nav-link" data-scroll-target="#線形解を書き直す"><span class="header-section-number">10</span> 線形解を書き直す</a></li>
+  <li><a href="#線形解を書き直す" id="toc-線形解を書き直す" class="nav-link" data-scroll-target="#線形解を書き直す"><span class="header-section-number">10</span> 線形解を書き直す</a>
+  <ul class="collapse">
+  <li><a href="#鉛直渦度ゼロを用いて水平速度を表す" id="toc-鉛直渦度ゼロを用いて水平速度を表す" class="nav-link" data-scroll-target="#鉛直渦度ゼロを用いて水平速度を表す"><span class="header-section-number">10.1</span> 鉛直渦度ゼロを用いて水平速度を表す</a></li>
+  </ul></li>
   <li><a href="#単一モードではなぜ不十分か" id="toc-単一モードではなぜ不十分か" class="nav-link" data-scroll-target="#単一モードではなぜ不十分か"><span class="header-section-number">11</span> 単一モードではなぜ不十分か</a></li>
   <li><a href="#三波共鳴と六角形状" id="toc-三波共鳴と六角形状" class="nav-link" data-scroll-target="#三波共鳴と六角形状"><span class="header-section-number">12</span> 三波共鳴と六角形状</a></li>
-  <li><a href="#hexagon-の向き上昇中心か下降中心か" id="toc-hexagon-の向き上昇中心か下降中心か" class="nav-link" data-scroll-target="#hexagon-の向き上昇中心か下降中心か"><span class="header-section-number">13</span> hexagon の向き：上昇中心か下降中心か</a></li>
+  <li><a href="#上昇か下降か" id="toc-上昇か下降か" class="nav-link" data-scroll-target="#上昇か下降か"><span class="header-section-number">13</span> 上昇か下降か</a></li>
   <li><a href="#有限深さ二層への一般化" id="toc-有限深さ二層への一般化" class="nav-link" data-scroll-target="#有限深さ二層への一般化"><span class="header-section-number">14</span> 有限深さ二層への一般化</a></li>
   <li><a href="#全体のまとめ" id="toc-全体のまとめ" class="nav-link" data-scroll-target="#全体のまとめ"><span class="header-section-number">15</span> 全体のまとめ</a></li>
   <li><a href="#参考文献" id="toc-参考文献" class="nav-link" data-scroll-target="#参考文献">参考文献</a></li>
@@ -2860,7 +2863,7 @@ E(K,\varepsilon)=
 \]</span> である．<span class="math inline">\(E\)</span> が大きいほど，同じ界面変位に対する速度応答が大きい．したがって，線形解析で選ばれた <span class="math inline">\(K_m\)</span> は，実質的に粘性抵抗が最も小さくなる波数である．</p>
 <details open="" class="derivation">
 <summary>
-途中式：A15からB3を読む
+途中式：A15からB3
 </summary>
 <p>式（A15）は</p>
 <p><span class="math display">\[
@@ -2894,59 +2897,450 @@ E(K,\varepsilon)\eta
 \]</span></p>
 <p>となる．これを <span class="math inline">\(E^{-1}\)</span> を用いて書き直したものが式（B3）である．</p>
 </details>
-<p>鉛直渦度がゼロであることを使い，水平速度を <span class="math inline">\(w\)</span> と <span class="math inline">\(\eta\)</span> で表すと，論文は <span class="math display">\[
-\boxed{
-\frac{\partial \eta}{\partial t}
-=\frac{g\Delta\rho}{E}
-\left\{
-\eta-F\left[
-\frac{\partial}{\partial x}\left(\eta\frac{\partial \eta}{\partial x}\right)
-+\frac{\partial}{\partial y}\left(\eta\frac{\partial \eta}{\partial y}\right)
-\right]
-\right\}
-}
-\tag{B4}
-\]</span> を得る．ここで <span class="math display">\[
-F=\left.\frac{1}{w}\frac{\partial w}{\partial z}\right|_{z=h}.
+<section id="鉛直渦度ゼロを用いて水平速度を表す" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="鉛直渦度ゼロを用いて水平速度を表す"><span class="header-section-number">10.1</span> 鉛直渦度ゼロを用いて水平速度を表す</h2>
+<p>Appendix 2では，式（B2）に現れる水平移流項</p>
+<p><span class="math display">\[
+u\frac{\partial\eta}{\partial x}
++
+v\frac{\partial\eta}{\partial y}
 \]</span></p>
-<p><span class="math inline">\(F\)</span> の符号は，界面で <span class="math inline">\(w\)</span> と <span class="math inline">\(\partial_z w\)</span> が同相か逆相かを表す．これが hexagon の “sense”，すなわち中心が上昇か下降かを決める．</p>
+<p>を，界面変位 <span class="math inline">\(\eta\)</span> だけで表す必要がある．そのために，鉛直渦度がゼロであることと非圧縮条件を用いる．</p>
 <details open="" class="derivation">
 <summary>
-途中式：B2の二次項がB4の発散形になる理由
+途中式：鉛直渦度ゼロから水平速度を求める
 </summary>
-<p>式（B2）の二次項は</p>
+<p>速度を，</p>
 <p><span class="math display">\[
+\boldsymbol{u}
+=
+(\boldsymbol{u}_h,w),
+\qquad
+\boldsymbol{u}_h=(u,v)
+\]</span></p>
+<p>と分ける．</p>
+<p>鉛直渦度は，</p>
+<p><span class="math display">\[
+\omega_z
+=
+\frac{\partial v}{\partial x}
+-
+\frac{\partial u}{\partial y}
+\]</span></p>
+<p>である．ここで，</p>
+<p><span class="math display">\[
+\omega_z=0
+\]</span></p>
+<p>を仮定する．これは，水平速度場が水平面内で回転をもたないことを意味する．したがって，水平速度はあるスカラー関数 <span class="math inline">\(\phi\)</span> を用いて，</p>
+<p><span class="math display">\[
+\boldsymbol{u}_h
+=
+\nabla_h\phi
+\]</span></p>
+<p>と書ける．すなわち，</p>
+<p><span class="math display">\[
+u
+=
+\frac{\partial\phi}{\partial x},
+\qquad
+v
+=
+\frac{\partial\phi}{\partial y}
+\]</span></p>
+<p>である．</p>
+<p>一方，非圧縮条件は，</p>
+<p><span class="math display">\[
+\nabla_h\cdot\boldsymbol{u}_h
++
+\frac{\partial w}{\partial z}
+=
+0
+\]</span></p>
+<p>なので，</p>
+<p><span class="math display">\[
+\nabla_h^2\phi
+=
+-
+\frac{\partial w}{\partial z}
+\]</span></p>
+<p>となる．</p>
+<p>水平方向に波数 <span class="math inline">\(k\)</span> をもつ成分について，</p>
+<p><span class="math display">\[
+\nabla_h^2 f
+=
+-k^2f
+\]</span></p>
+<p>である．鉛直速度を，</p>
+<p><span class="math display">\[
+w(x,y,z,t)
+=
+W(z)f(x,y,t)
+\]</span></p>
+<p>と書けば，</p>
+<p><span class="math display">\[
+\frac{\partial w}{\partial z}
+=
+W'(z)f
+\]</span></p>
+<p>である．したがって，</p>
+<p><span class="math display">\[
+\phi
+=
+\frac{W'(z)}{k^2}f
+\]</span></p>
+<p>と置けば，</p>
+<p><span class="math display">\[
+\nabla_h^2\phi
+=
+\frac{W'}{k^2}\nabla_h^2f
+=
+-W'f
+=
+-\frac{\partial w}{\partial z}
+\]</span></p>
+<p>となり，非圧縮条件を満たす．</p>
+<p>よって，水平速度は，</p>
+<p><span class="math display">\[
+u
+=
+\frac{W'(z)}{k^2}
+\frac{\partial f}{\partial x},
+\]</span></p>
+<p><span class="math display">\[
+v
+=
+\frac{W'(z)}{k^2}
+\frac{\partial f}{\partial y}
+\]</span></p>
+<p>と表される．</p>
+<div class="pointbox">
+<p>非圧縮条件だけでは，水平速度の発散しか決まらない．鉛直渦度をゼロと仮定することで，波数ベクトルに直交する独立な水平せん断成分を除き，水平速度を鉛直速度から一意に表せる．</p>
+</div>
+</details>
+<!-- ## 線形応答を用いて $u,v,\partial_z w$ を $\eta$ で表す -->
+<p>Appendix 1の線形解から，界面における鉛直速度は界面変位に比例し，</p>
+<p><span class="math display">\[
+w(h)
+=
+\lambda\eta
+\]</span></p>
+<p>と書ける．ここで，</p>
+<p><span class="math display">\[
+\lambda
+=
+\frac{g\Delta\rho}{E}
+\]</span></p>
+<p>は，波数と粘性比に依存する線形応答係数である．</p>
+<p>また，界面での鉛直速度勾配と鉛直速度の比を，</p>
+<p><span class="math display">\[
+F
+=
+\left.
+\frac{1}{w}
+\frac{\partial w}{\partial z}
+\right|_{z=h}
+\]</span></p>
+<p>と定義する．したがって，</p>
+<p><span class="math display">\[
+\left.
+\frac{\partial w}{\partial z}
+\right|_{z=h}
+=
+Fw(h)
+=
+F\lambda\eta
+\]</span></p>
+<p>である．</p>
+<p>さらに，</p>
+<p><span class="math display">\[
+w=W(z)f
+\]</span></p>
+<p>なので，界面では，</p>
+<p><span class="math display">\[
+W(h)f
+=
+\lambda\eta
+\]</span></p>
+<p>である．したがって，</p>
+<p><span class="math display">\[
+f
+=
+\frac{\lambda}{W(h)}\eta
+\]</span></p>
+<p>となる．</p>
+<p>一方，</p>
+<p><span class="math display">\[
+F
+=
+\frac{W'(h)}{W(h)}
+\]</span></p>
+<p>なので，</p>
+<p><span class="math display">\[
+W'(h)f
+=
+F\lambda\eta
+\]</span></p>
+<p>である．これを先ほど求めた水平速度へ代入すると，</p>
+<p><span class="math display">\[
+u
+=
+\frac{F\lambda}{k^2}
+\frac{\partial\eta}{\partial x},
+\]</span></p>
+<p><span class="math display">\[
+v
+=
+\frac{F\lambda}{k^2}
+\frac{\partial\eta}{\partial y}
+\]</span></p>
+<p>を得る．</p>
+<p>式（B2）は，</p>
+<p><span class="math display">\[
+\frac{\partial\eta}{\partial t}
+=
+w(h)
++
+\eta\frac{\partial w}{\partial z}
+-
+u\frac{\partial\eta}{\partial x}
+-
+v\frac{\partial\eta}{\partial y}
+\]</span></p>
+<p>である．</p>
+<p>線形応答</p>
+<p><span class="math display">\[
+w(h)=\lambda\eta
+\]</span></p>
+<p>および，</p>
+<p><span class="math display">\[
+\frac{\partial w}{\partial z}
+=
+F\lambda\eta
+\]</span></p>
+<p>を用いると，</p>
+<p><span class="math display">\[
+\eta\frac{\partial w}{\partial z}
+=
+F\lambda\eta^2
+\]</span></p>
+<p>である．</p>
+<p>また，水平移流項は，</p>
+<p><span class="math display">\[
+u\frac{\partial\eta}{\partial x}
++
+v\frac{\partial\eta}{\partial y}
+=
+\frac{F\lambda}{k^2}
+\left[
+\left(
+\frac{\partial\eta}{\partial x}
+\right)^2
++
+\left(
+\frac{\partial\eta}{\partial y}
+\right)^2
+\right]
+\]</span></p>
+<p>となる．</p>
+<p>したがって，</p>
+<p><span class="math display">\[
+\frac{\partial\eta}{\partial t}
+=
+\lambda
+\left[
+\eta
++
+F\eta^2
+-
+\frac{F}{k^2}
+\left(
+\left|
+\nabla_h\eta
+\right|^2
+\right)
+\right]
+\]</span></p>
+<p>を得る．</p>
+<p>ここで，</p>
+<p><span class="math display">\[
+\left|
+\nabla_h\eta
+\right|^2
+=
+\left(
+\frac{\partial\eta}{\partial x}
+\right)^2
++
+\left(
+\frac{\partial\eta}{\partial y}
+\right)^2
+\]</span></p>
+<p>である．</p>
+<p>恒等式，</p>
+<p><span class="math display">\[
+\nabla_h\cdot
+\left(
+\eta\nabla_h\eta
+\right)
+=
+\left|
+\nabla_h\eta
+\right|^2
++
+\eta\nabla_h^2\eta
+\]</span></p>
+<p>を用いる．</p>
+<p>波数 <span class="math inline">\(k\)</span> をもつ成分について，</p>
+<p><span class="math display">\[
+\nabla_h^2\eta
+=
+-k^2\eta
+\]</span></p>
+<p>なので，</p>
+<p><span class="math display">\[
+\nabla_h\cdot
+\left(
+\eta\nabla_h\eta
+\right)
+=
+\left|
+\nabla_h\eta
+\right|^2
+-
+k^2\eta^2
+\]</span></p>
+<p>である．したがって，</p>
+<p><span class="math display">\[
+\eta^2
+-
+\frac{1}{k^2}
+\left|
+\nabla_h\eta
+\right|^2
+=
+-
+\frac{1}{k^2}
+\nabla_h\cdot
+\left(
+\eta\nabla_h\eta
+\right)
+\]</span></p>
+<p>となる．これを代入すると，</p>
+<p><span class="math display">\[
+\frac{\partial\eta}{\partial t}
+=
+\lambda
+\left[
+\eta
+-
+\frac{F}{k^2}
+\nabla_h\cdot
+\left(
+\eta\nabla_h\eta
+\right)
+\right]
+\]</span></p>
+<p>を得る．</p>
+<p>成分表示すれば，</p>
+<p><span class="math display">\[
+\frac{\partial\eta}{\partial t}
+=
+\lambda
+\left\{
+\eta
+-
+\frac{F}{k^2}
+\left[
+\frac{\partial}{\partial x}
+\left(
+\eta\frac{\partial\eta}{\partial x}
+\right)
++
+\frac{\partial}{\partial y}
+\left(
+\eta\frac{\partial\eta}{\partial y}
+\right)
+\right]
+\right\}
+\]</span></p>
+<p>となる．</p>
+<p>論文では，座標や係数の規格化をまとめて，</p>
+<p><span class="math display">\[
+\frac{\partial\eta}{\partial t}
+=
+\frac{g\Delta\rho}{E}
+\left\{
+\eta
+-
+F
+\left[
+\frac{\partial}{\partial x}
+\left(
+\eta\frac{\partial\eta}{\partial x}
+\right)
++
+\frac{\partial}{\partial y}
+\left(
+\eta\frac{\partial\eta}{\partial y}
+\right)
+\right]
+\right\}
+\tag{B4}
+\]</span></p>
+<p>と書いている．</p>
+<p><span class="math inline">\(F\)</span> の符号は，界面で <span class="math inline">\(w\)</span> と <span class="math inline">\(\partial_z w\)</span> が同相か逆相かを表す．これが hexagon の “sense”，すなわち中心が上昇か下降かを決める． <!-- 
+<details open class="derivation">
+<summary>途中式：B2の二次項がB4の発散形になる理由</summary>
+
+式（B2）の二次項は
+
+$$
 \eta w_z-u\eta_x-v\eta_y
-\]</span></p>
-<p>である．Appendix 2では，速度場の空間構造は線形解で近似する．そこで界面近傍で</p>
-<p><span class="math display">\[
+$$
+
+である．Appendix 2では，速度場の空間構造は線形解で近似する．そこで界面近傍で
+
+$$
 w_z=Fw
-\]</span></p>
-<p>と書く．また，線形応答では <span class="math inline">\(w\)</span> は <span class="math inline">\(\eta\)</span> に比例するので，比例係数をまとめて <span class="math inline">\(G\)</span> と書けば</p>
-<p><span class="math display">\[
+$$
+
+と書く．また，線形応答では $w$ は $\eta$ に比例するので，比例係数をまとめて $G$ と書けば
+
+$$
 w=G\eta
-\]</span></p>
-<p>である．このとき <span class="math inline">\(w_z=FG\eta\)</span> となる．</p>
-<p>水平速度については，鉛直渦度がゼロという仮定により，水平速度を水平ポテンシャルで表せる．さらに非圧縮条件</p>
-<p><span class="math display">\[
+$$
+
+である．このとき $w_z=FG\eta$ となる．
+
+水平速度については，鉛直渦度がゼロという仮定により，水平速度を水平ポテンシャルで表せる．さらに非圧縮条件
+
+$$
 \nabla_h\cdot\boldsymbol{u}_h=-w_z
-\]</span></p>
-<p>を使うと，界面近傍の水平流は，界面変位の水平勾配に沿う形で書ける．その結果，B2の二次項は</p>
-<p><span class="math display">\[
+$$
+
+を使うと，界面近傍の水平流は，界面変位の水平勾配に沿う形で書ける．その結果，B2の二次項は
+
+$$
 \eta w_z-\boldsymbol{u}_h\cdot\nabla_h\eta
 =
 -GF\nabla_h\cdot(\eta\nabla_h\eta)
-\]</span></p>
-<p>の形にまとめられる．ここで</p>
-<p><span class="math display">\[
+$$
+
+の形にまとめられる．ここで
+
+$$
 \nabla_h\cdot(\eta\nabla_h\eta)
 =
 \frac{\partial}{\partial x}\left(\eta\frac{\partial\eta}{\partial x}\right)
 +
 \frac{\partial}{\partial y}\left(\eta\frac{\partial\eta}{\partial y}\right)
-\]</span></p>
-<p>である．線形項 <span class="math inline">\(G\eta\)</span> と合わせて書けば，式（B4）の形になる．</p>
-</details>
+$$
+
+である．線形項 $G\eta$ と合わせて書けば，式（B4）の形になる．
+
+
+</details> --></p>
+</section>
 </section>
 <section id="単一モードではなぜ不十分か" class="level1" data-number="11">
 <h1 data-number="11"><span class="header-section-number">11</span> 単一モードではなぜ不十分か</h1>
@@ -2966,7 +3360,7 @@ w=G\eta
 \]</span> が現れる．したがって生成されるのは主に <span class="math inline">\(2k\)</span> の高調波であり，元の最適波数 <span class="math inline">\(k_m\)</span> を直接強化しない．</p>
 <details open="" class="derivation">
 <summary>
-途中式：単一モードが元の波数へ戻らないことを見る
+途中式：単一モードが元の波数へ戻らない
 </summary>
 <p>二次項は，模式的には</p>
 <p><span class="math display">\[
@@ -3077,8 +3471,8 @@ k_m^2
 </p>
 </div>
 </section>
-<section id="hexagon-の向き上昇中心か下降中心か" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> hexagon の向き：上昇中心か下降中心か</h1>
+<section id="上昇か下降か" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> 上昇か下降か</h1>
 <p>上層の鉛直速度 <span class="math display">\[
 w_2=C\mathrm{e}^{-k\hat z}+D\mathrm{e}^{-q_2\hat z}
 \tag{B6}
@@ -3086,34 +3480,43 @@ w_2=C\mathrm{e}^{-k\hat z}+D\mathrm{e}^{-q_2\hat z}
 F=\frac{1}{w_2}\frac{\partial w_2}{\partial z}
 \]</span> の符号を調べる．行列式の整理により，small <span class="math inline">\(K\)</span> では <span class="math display">\[
 \frac{(\partial w_2/\partial z)}{w_2}\simeq\frac12
-\]</span> となる．したがって <span class="math inline">\(w\)</span> と <span class="math inline">\(\partial_z w\)</span> は同相であり，薄層から外へ出る流れが細い円形 jet，薄層へ戻る流れが広い六角形領域となる．</p>
-<details open="" class="derivation">
-<summary>
-途中式：Fの符号がhexagonの向きを決める
-</summary>
-<p>B4の非線形項は</p>
-<p><span class="math display">\[
+\]</span> となる．したがって <span class="math inline">\(w\)</span> と <span class="math inline">\(\partial_z w\)</span> は同相であり，薄層から外へ出る流れが細い円形 jet，薄層へ戻る流れが広い六角形領域となる． <!-- 
+<details open class="derivation">
+<summary>途中式：Fの符号がhexagonの向きを決める</summary>
+
+B4の非線形項は
+
+$$
 -F\nabla_h\cdot(\eta\nabla_h\eta)
-\]</span></p>
-<p>に比例する．したがって，<span class="math inline">\(F\)</span> の符号が変わると，二次項が強める山谷の向きも反転する．</p>
-<p>上層の解（B6）を界面 <span class="math inline">\(\hat z=0\)</span> で評価すると，</p>
-<p><span class="math display">\[
+$$
+
+に比例する．したがって，$F$ の符号が変わると，二次項が強める山谷の向きも反転する．
+
+上層の解（B6）を界面 $\hat z=0$ で評価すると，
+
+$$
 w_2(0)=C+D
-\]</span></p>
-<p>であり，</p>
-<p><span class="math display">\[
+$$
+
+であり，
+
+$$
 \left.\frac{\partial w_2}{\partial z}\right|_{\hat z=0}
 =
 -kC-q_2D
-\]</span></p>
-<p>である．したがって，</p>
-<p><span class="math display">\[
+$$
+
+である．したがって，
+
+$$
 F
 =
 \frac{-kC-q_2D}{C+D}
-\]</span></p>
-<p>である．係数 <span class="math inline">\(C,D\)</span> は境界条件で決まるため，<span class="math inline">\(F\)</span> の符号は粘性比や層厚に依存する．論文の半無限上層・small <span class="math inline">\(K\)</span> の場合には，この比が正となるような位相関係になり，薄層から外へ出る流れが細く集中する向きが選ばれる．</p>
-</details>
+$$
+
+である．係数 $C,D$ は境界条件で決まるため，$F$ の符号は粘性比や層厚に依存する．論文の半無限上層・small $K$ の場合には，この比が正となるような位相関係になり，薄層から外へ出る流れが細く集中する向きが選ばれる．
+
+</details> --></p>
 </section>
 <section id="有限深さ二層への一般化" class="level1" data-number="14">
 <h1 data-number="14"><span class="header-section-number">14</span> 有限深さ二層への一般化</h1>
@@ -3129,7 +3532,72 @@ w_1=\left[A\sinh k(z+h_1)+B\sinh q_1(z+h_1)\right]g(x,y)\mathrm{e}^{nt},
 w_2=\left[C\sinh k(z-h_2)+D\sinh q_2(z-h_2)\right]g(x,y)\mathrm{e}^{nt}.
 \tag{B13}
 \]</span></p>
-<p>と置く．spout の向きが反転する境界では，界面で <span class="math inline">\(w\)</span> と <span class="math inline">\(\partial_z w\)</span> の位相関係が変わる．その境界は，界面での <span class="math inline">\(Dw_1=Dw_2=0\)</span> を満たす条件として求められ， <span class="math display">\[
+<p>と置く．これは上下境界 <span class="math inline">\(z=-h_1,\ h_2\)</span> で <span class="math inline">\(w=0\)</span> を自動的に満たす形である．</p>
+<p>spout の向きは，界面での <span class="math inline">\(w\)</span> と <span class="math inline">\(Dw\)</span> の相対符号で決まる．したがって向きが反転する境界では，界面で</p>
+<p><span class="math display">\[
+Dw_1(0)=Dw_2(0)=0
+\]</span></p>
+<p>となる．式（B12），（B13）を微分して <span class="math inline">\(z=0\)</span> に代入すると，</p>
+<p><span class="math display">\[
+Ak\cosh kh_1+Bq_1\cosh q_1h_1=0,
+\]</span></p>
+<p><span class="math display">\[
+Ck\cosh kh_2+Dq_2\cosh q_2h_2=0
+\]</span></p>
+<p>である．したがって，</p>
+<p><span class="math display">\[
+A=
+-\frac{Bq_1\cosh q_1h_1}{k\cosh kh_1},
+\tag{B14}
+\]</span></p>
+<p><span class="math display">\[
+C=
+-\frac{Dq_2\cosh q_2h_2}{k\cosh kh_2}.
+\tag{B15}
+\]</span></p>
+<p>これで <span class="math inline">\(A,C\)</span> は消え，残る未知数は <span class="math inline">\(B,D\)</span> だけになる．次に，界面での法線速度連続</p>
+<p><span class="math display">\[
+w_1(0)=w_2(0)
+\]</span></p>
+<p>と接線応力連続</p>
+<p><span class="math display">\[
+\mu_1(D^2+k^2)w_1
+=
+\mu_2(D^2+k^2)w_2
+\qquad (z=0)
+\]</span></p>
+<p>を用いる．B14，B15を代入すると，この二つは <span class="math inline">\(B,D\)</span> に関する二本の線形方程式になる．非自明な <span class="math inline">\(B,D\)</span> が存在するためには，その二本が両立しなければならない．その両立条件が</p>
+<p><span class="math display">\[
+\boxed{
+\mu_1
+-
+\frac{
+n\rho_1\coth kh_1
+}{
+2k\left(q_1\coth q_1h_1-k\coth kh_1\right)
+}
+=
+\mu_2
+-
+\frac{
+n\rho_2\coth kh_2
+}{
+2k\left(q_2\coth q_2h_2-k\coth kh_2\right)
+}
+}
+\tag{B16}
+\]</span></p>
+<p>である．B16は，どちらの側へ spout が出るかを分ける境界条件である．ただし，この段階ではまだ <span class="math inline">\(n(k)\)</span> を使っていないので，粘性・密度・層厚・波数の一般的な関係式にとどまる．</p>
+<p>最後に，slow viscous flow の近似</p>
+<p><span class="math display">\[
+q_i\coth(q_ih_i)-k\coth kh_i
+\simeq
+\frac{n}{2\nu_i k}
+\left[
+\coth kh_i-kh_i\,\mathrm{csch}^2kh_i
+\right]
+\]</span></p>
+<p>を B16 に代入する．<span class="math inline">\(K_i=2kh_i\)</span> と置いて整理すると， <span class="math display">\[
 \boxed{
 \mu_1\frac{K_1}{\sinh K_1-K_1}
 =\mu_2\frac{K_2}{\sinh K_2-K_2}
@@ -3138,35 +3606,101 @@ w_2=\left[C\sinh k(z-h_2)+D\sinh q_2(z-h_2)\right]g(x,y)\mathrm{e}^{nt}.
 \]</span> を得る．ここで <span class="math inline">\(K_i=2kh_i\)</span> である．</p>
 <details open="" class="derivation">
 <summary>
-途中式：有限深さで反転条件が出る考え方
+途中式：B14-B16からB17へ
 </summary>
-<p>半無限上層では，上層側の解は上方で減衰する指数関数だけを残せばよかった．有限深さの場合は，上下の固定境界で法線速度がゼロになるため，それぞれの境界からの距離を使って</p>
+<p>反転境界では <span class="math inline">\(Dw_i(0)=0\)</span> と置く．まず下層側では</p>
 <p><span class="math display">\[
-\sinh k(z+h_1),
+Dw_1(0)
+=
+Ak\cosh kh_1
++
+Bq_1\cosh q_1h_1
+=0
+\]</span></p>
+<p>なので，B14を得る．上層側も同様に</p>
+<p><span class="math display">\[
+Dw_2(0)
+=
+Ck\cosh kh_2
++
+Dq_2\cosh q_2h_2
+=0
+\]</span></p>
+<p>なので，B15を得る．</p>
+<p>B14を用いると，界面での下層側の速度は</p>
+<p><span class="math display">\[
+w_1(0)
+=
+B\left[
+\sinh q_1h_1
+-
+\frac{q_1}{k}\cosh q_1h_1\tanh kh_1
+\right]
+\]</span></p>
+<p>となる．また，</p>
+<p><span class="math display">\[
+(D^2+k^2)w_1(0)
+=
+B\left[
+(q_1^2+k^2)\sinh q_1h_1
+-
+2kq_1\cosh q_1h_1\tanh kh_1
+\right]
+\]</span></p>
+<p>である．上層側も B15 を使って同じ形に書ける．</p>
+<p>ここで，<span class="math inline">\(w_1(0)=w_2(0)\)</span> と</p>
+<p><span class="math display">\[
+\mu_1(D^2+k^2)w_1(0)
+=
+\mu_2(D^2+k^2)w_2(0)
+\]</span></p>
+<p>を同時に満たす必要がある．つまり，<span class="math inline">\(B\)</span> と <span class="math inline">\(D\)</span> に関する二本の式が同じ比 <span class="math inline">\(B/D\)</span> を与えなければならない．この両立条件を整理したものが B16 である．</p>
+<p>B16を slow viscous flow で評価する．A14a と同じ展開により，</p>
+<p><span class="math display">\[
+q_i\coth(q_ih_i)-k\coth kh_i
+\simeq
+\frac{n}{2\nu_i k}
+\left[
+\coth kh_i-kh_i\,\mathrm{csch}^2kh_i
+\right]
+\]</span></p>
+<p>である．これを B16 の第 <span class="math inline">\(i\)</span> 層の補正項に代入すると，</p>
+<p><span class="math display">\[
+\frac{
+n\rho_i\coth kh_i
+}{
+2k\left(q_i\coth q_ih_i-k\coth kh_i\right)
+}
+=
+\mu_i
+\frac{\coth kh_i}
+{\coth kh_i-kh_i\,\mathrm{csch}^2kh_i}
+\]</span></p>
+<p>となる．したがって B16 の各辺は</p>
+<p><span class="math display">\[
+\mu_i
+-
+\mu_i
+\frac{\coth kh_i}
+{\coth kh_i-kh_i\,\mathrm{csch}^2kh_i}
+=
+-
+\mu_i
+\frac{kh_i}{\sinh kh_i\cosh kh_i-kh_i}
+\]</span></p>
+<p>となる．ここで <span class="math inline">\(K_i=2kh_i\)</span> を用いれば，</p>
+<p><span class="math display">\[
+\sinh kh_i\cosh kh_i
+=
+\frac12\sinh K_i,
 \qquad
-\sinh q_1(z+h_1)
+kh_i=\frac12K_i
 \]</span></p>
-<p>および</p>
+<p>なので，</p>
 <p><span class="math display">\[
-\sinh k(z-h_2),
-\qquad
-\sinh q_2(z-h_2)
+-\mu_i\frac{kh_i}{\sinh kh_i\cosh kh_i-kh_i}=-\mu_i\frac{K_i}{\sinh K_i-K_i}
 \]</span></p>
-<p>を使うと，境界で <span class="math inline">\(w=0\)</span> を自動的に満たせる．これが（B12），（B13）の形である．</p>
-<p>spout の向きは，界面での</p>
-<p><span class="math display">\[
-F_i=\left.\frac{1}{w_i}\frac{\partial w_i}{\partial z}\right|_{z=0}
-\]</span></p>
-<p>の符号，すなわち <span class="math inline">\(w_i\)</span> と <span class="math inline">\(Dw_i\)</span> の位相関係で決まる．向きが反転する境界では，この比がゼロを横切るので，界面で</p>
-<p><span class="math display">\[
-Dw_1=Dw_2=0
-\]</span></p>
-<p>となる条件を調べればよい．</p>
-<p>（B12），（B13）を境界条件に代入し，slow viscous flow の極限 <span class="math inline">\(q_i\to k\)</span> を一次まで残して整理すると，各層からの寄与は</p>
-<p><span class="math display">\[
-\mu_i\frac{K_i}{\sinh K_i-K_i}
-\]</span></p>
-<p>という形にまとまる．両側の寄与が等しくなるところで向きが反転するため，式（B17）を得る．</p>
+<p>である．両辺のマイナスを消せば，B17を得る．</p>
 </details>
 <p>この式は，粘性比だけでなく，両層の厚さも jet の向きを決めることを示す．半無限上層の極限では一方の向きが選ばれるが，有限深さでは層厚を変えることで向きが反転し得る．</p>
 </section>
@@ -3195,7 +3729,7 @@ Dw_1=Dw_2=0
 </section>
 <section id="参考文献" class="level1 unnumbered">
 <h1 class="unnumbered">参考文献</h1>
-<p>whitehead, J. A., Jr., and D. S. Luther (1975), Dynamics of laboratory diapir and plume models, <em>Journal of Geophysical Research</em>, <strong>80</strong>(5), 705–717. –&gt; –&gt;</p>
+<p>whitehead, J. A., Jr., and D. S. Luther (1975), Dynamics of laboratory diapir and plume models, <em>Journal of Geophysical Research</em>, <strong>80</strong>(5), 705–717. –&gt;</p>
 
 
 </section>
