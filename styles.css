@@ -163,6 +163,10 @@ summary { cursor: pointer; color: var(--blue); font-weight: 700; padding: 10px 0
 .figure-card { background: var(--paper); border: 1px solid var(--border); border-radius: 14px; padding: 12px; margin: 14px 0; text-align: center; }
 .figure-card svg { max-width: 100%; height: auto; }
 .small-note { color: var(--muted); font-size: .83em; }
+/* author欄の「Author／作者」という見出しだけ非表示 */
+.quarto-title-meta > div:first-child > .quarto-title-meta-heading {
+  display: none;
+}
 @media (max-width: 950px) {
   :root { --page-gutter: 18px; }
   nav#TOC { width: min(86vw, 330px); }
