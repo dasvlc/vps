@@ -19,8 +19,8 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  padding-left: clamp(48px, 8vw, 160px);
-  padding-right: clamp(48px, 8vw, 160px);
+  padding-left: 0;
+  padding-right: 0;
   box-sizing: border-box;
 
   background: var(--bg);
@@ -29,6 +29,17 @@ body {
                "Hiragino Kaku Gothic ProN", sans-serif;
   font-size: var(--base-size);
   line-height: 1.62;
+}
+
+/* タイトルと本文をウィンドウ幅の90％にする */
+header#title-block-header,
+main.content,
+#quarto-document-content {
+  width: 90vw;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 body.dark {
   --bg: #11161c; --paper: #182029; --text: #edf2f7; --muted: #aeb9c5;
